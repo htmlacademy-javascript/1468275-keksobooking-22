@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг»
 
 * Студент: [Matvey Avdeev](https://up.htmlacademy.ru/javascript/22/user/1468275).
-* Наставник: `Неизвестно`.
+* Наставник: [Евгений Лепёшкин](https://htmlacademy.ru/profile/id144641).
 
 ---
 
