@@ -1,29 +1,19 @@
 const getRandomInteger = (min, max) => {
-  let randomInt = Math.floor(Math.random() * (max - min + 1)) + min;
-
-  if (max <= min) {
-    return 'Максимальное число меньше минимального или равно ему!';
-  }
-  if (min < 0 || max < 0) {
-    return 'Одно из чисел отрицательное!';
+  if (max <= min || (min < 0 || max < 0)) {
+    return -1;
   }
 
-  return randomInt;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
 getRandomInteger();
 
 const getRandomNumber = (min, max, floatNum) => {
-  let randomNum = Math.random() * (max - min + 1) + min;
-
-  if (max <= min) {
-    return 'Максимальное число меньше минимального или равно ему!';
-  }
-  if (min < 0 || max < 0) {
-    return 'Одно из чисел отрицательное!';
+  if (max <= min || (min < 0 || max < 0)) {
+    return -1;
   }
 
-  return randomNum.toFixed(floatNum);
+  return (Math.random() * (max - min + 1) + min).toFixed(floatNum);
 };
 
 getRandomNumber();
