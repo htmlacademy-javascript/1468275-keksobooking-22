@@ -1,4 +1,4 @@
-const SIMILAR_OBJECT_COUNT = 10;
+const OFFERS_COUNT = 10;
 
 const Avatar = {
   MIN: 1,
@@ -28,6 +28,8 @@ const getRandomNumber = (min, max, floatNum = 0) => {
   return floatNum === 0 ? Math.floor(Math.random() * (max - min + 1)) + min : +((Math.random() * (max - min) + min).toFixed(floatNum));
 };
 
+let offers = [];
+
 let types = ['palace', 'flat', 'house', 'bungalow'];
 
 let checkins = ['12:00', '13:00', '14:00'];
@@ -50,31 +52,32 @@ const shuffleArray = (a) => {
   return a;
 }
 
-const createSomeObject = () => {
-  return {
-    author: {
-      avatar: 'img/avatars/user0' + getRandomNumber(Avatar.MIN, Avatar.MAX) + '.png',
-    },
-    offer: {
-      title: 'Какой-то заголовок.',
-      adress: getRandomNumber(35.65000, 35.70000, 5) + ', ' + getRandomNumber(139.70000, 139.80000, 5),
-      price: getRandomNumber(Price.MIN, Price.MAX),
-      type: getRandomArrayElelement(types),
-      rooms: getRandomNumber(Room.MIN, Room.MAX),
-      guests: getRandomNumber(Guest.MIN, Guest.MAX),
-      checkin: getRandomArrayElelement(checkins),
-      checkout: getRandomArrayElelement(checkouts),
-      features: shuffleArray(features).slice(0, getRandomNumber(1, features.length)),
-      description: 'Какое-то описание.',
-      photos: getRandomArrayElelement(photos),
-    },
-    location: {
-      x: getRandomNumber(35.65000, 35.70000, 5),
-      y: getRandomNumber(139.70000, 139.80000, 5),
-    },
-  };
+const addOffers = () => {
+  for (let i = 0; i < OFFERS_COUNT; i++) {
+    offers.push({
+      author: {
+        avatar: 'img/avatars/user0' + getRandomNumber(Avatar.MIN, Avatar.MAX) + '.png',
+      },
+      offer: {
+        title: 'Какой-то заголовок.',
+        adress: getRandomNumber(35.65000, 35.70000, 5) + ', ' + getRandomNumber(139.70000, 139.80000, 5),
+        price: getRandomNumber(Price.MIN, Price.MAX),
+        type: getRandomArrayElelement(types),
+        rooms: getRandomNumber(Room.MIN, Room.MAX),
+        guests: getRandomNumber(Guest.MIN, Guest.MAX),
+        checkin: getRandomArrayElelement(checkins),
+        checkout: getRandomArrayElelement(checkouts),
+        features: shuffleArray(features).slice(0, getRandomNumber(1, features.length)),
+        description: 'Какое-то описание.',
+        photos: getRandomArrayElelement(photos),
+      },
+      location: {
+        x: getRandomNumber(35.65000, 35.70000, 5),
+        y: getRandomNumber(139.70000, 139.80000, 5),
+      },
+    });
+  }
+  return offers;
 };
 
-const similarSomeObjects = new Array(SIMILAR_OBJECT_COUNT).fill(null).map(() => createSomeObject());
-
-console.log(similarSomeObjects); // использую только для проверки правильности решения в ходе разработки
+addOffers();
