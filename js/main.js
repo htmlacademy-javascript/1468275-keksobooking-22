@@ -1,3 +1,5 @@
+import {getRandomNumber, getRandomArrayElelement, shuffleArray} from './util.js';
+
 const OFFERS_COUNT = 10;
 
 const Avatar = {
@@ -5,7 +7,7 @@ const Avatar = {
   MAX: 8,
 };
 
-const Guest = {
+const Guests = {
   MIN: 1,
   MAX: 5,
 };
@@ -15,42 +17,22 @@ const Price = {
   MAX: 10000,
 };
 
-const Room = {
+const Rooms = {
   MIN: 1,
   MAX: 5,
 };
 
-const getRandomNumber = (min, max, floatNum = 0) => {
-  if (max <= min || (min < 0 || max < 0)) {
-    return -1;
-  }
+const offers = [];
 
-  return floatNum === 0 ? Math.floor(Math.random() * (max - min + 1)) + min : +((Math.random() * (max - min) + min).toFixed(floatNum));
-};
+const types = ['palace', 'flat', 'house', 'bungalow'];
 
-let offers = [];
+const checkins = ['12:00', '13:00', '14:00'];
 
-let types = ['palace', 'flat', 'house', 'bungalow'];
+const checkouts = ['12:00', '13:00', '14:00'];
 
-let checkins = ['12:00', '13:00', '14:00'];
+const features = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
 
-let checkouts = ['12:00', '13:00', '14:00'];
-
-let features = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
-
-let photos = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
-
-const getRandomArrayElelement = (elements) => {
-  return elements[getRandomNumber(0, elements.length - 1)];
-};
-
-const shuffleArray = (a) => {
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
+const photos = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
 
 const addOffers = () => {
   for (let i = 0; i < OFFERS_COUNT; i++) {
@@ -63,8 +45,8 @@ const addOffers = () => {
         adress: getRandomNumber(35.65000, 35.70000, 5) + ', ' + getRandomNumber(139.70000, 139.80000, 5),
         price: getRandomNumber(Price.MIN, Price.MAX),
         type: getRandomArrayElelement(types),
-        rooms: getRandomNumber(Room.MIN, Room.MAX),
-        guests: getRandomNumber(Guest.MIN, Guest.MAX),
+        rooms: getRandomNumber(Rooms.MIN, Rooms.MAX),
+        guests: getRandomNumber(Guests.MIN, Guests.MAX),
         checkin: getRandomArrayElelement(checkins),
         checkout: getRandomArrayElelement(checkouts),
         features: shuffleArray(features).slice(0, getRandomNumber(1, features.length)),
