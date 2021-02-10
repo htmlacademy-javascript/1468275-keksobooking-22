@@ -20,16 +20,16 @@ const Rooms = {
   MAX: 5,
 };
 
-let offers = [];
+const offers = [];
 
-let types = ['palace', 'flat', 'house', 'bungalow'];
+const types = ['palace', 'flat', 'house', 'bungalow'];
 
-let checkins = ['12:00', '13:00', '14:00'];
+const checkins = ['12:00', '13:00', '14:00'];
 
-let checkouts = ['12:00', '13:00', '14:00'];
+const checkouts = ['12:00', '13:00', '14:00'];
 
-let features = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
+const features = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
 
-let photos = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
+const photos = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
 
 export {OFFERS_COUNT, Avatar, Guests, Price, Rooms, offers, types, checkins, checkouts, features, photos};
