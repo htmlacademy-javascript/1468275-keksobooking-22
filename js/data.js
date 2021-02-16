@@ -24,7 +24,12 @@ const Rooms = {
 
 const offers = [];
 
-const types = ['Дворец', 'Квартира', 'Дом', 'Бунгало'];
+const types = {
+  palace: 'Дворец',
+  flat: 'Квартира',
+  house: 'Дом',
+  bungalow: 'Бунгало',
+};
 
 const checkins = ['12:00', '13:00', '14:00'];
 
@@ -32,7 +37,7 @@ const checkouts = ['12:00', '13:00', '14:00'];
 
 const features = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
 
-const photos = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
+const PHOTOS = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
 
 const addOffers = () => {
   for (let i = 0; i < OFFERS_COUNT; i++) {
@@ -51,7 +56,7 @@ const addOffers = () => {
         checkout: getRandomArrayElelement(checkouts),
         features: shuffleArray(features).slice(0, getRandomNumber(1, features.length)),
         description: 'Какое-то описание.',
-        photos: getRandomArrayElelement(photos),
+        photos: shuffleArray(PHOTOS, getRandomNumber(1, PHOTOS.length)),
       },
       location: {
         x: getRandomNumber(35.65000, 35.70000, 5),
@@ -62,6 +67,4 @@ const addOffers = () => {
   return offers;
 };
 
-addOffers();
-
-export {addOffers, OFFERS_COUNT};
+export {addOffers, OFFERS_COUNT, types};

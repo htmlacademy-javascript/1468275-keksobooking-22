@@ -1,3 +1,8 @@
-import {similarOffers} from './popup.js'
+import {createCards} from './popup.js';
+import {addOffers} from './data.js';
 
-similarOffers();
+const map = document.querySelector('.map__canvas');
+const adverts = addOffers();
+const cardsMarkup = createCards(adverts);
+
+map.appendChild(cardsMarkup);
