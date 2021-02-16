@@ -2,6 +2,21 @@ import {getRandomNumber, getRandomArrayElelement, shuffleArray} from './util.js'
 
 const OFFERS_COUNT = 10;
 
+const TYPES = {
+  palace: 'Дворец',
+  flat: 'Квартира',
+  house: 'Дом',
+  bungalow: 'Бунгало',
+};
+
+const CHECKINS = ['12:00', '13:00', '14:00'];
+
+const CHECKOUTS = ['12:00', '13:00', '14:00'];
+
+const FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
+
+const PHOTOS = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
+
 const Avatar = {
   MIN: 1,
   MAX: 8,
@@ -22,28 +37,13 @@ const Rooms = {
   MAX: 5,
 };
 
-const OFFERS = [];
-
-const TYPES = {
-  palace: 'Дворец',
-  flat: 'Квартира',
-  house: 'Дом',
-  bungalow: 'Бунгало',
-};
+const offers = [];
 
 const apartamentTypes = Object.keys(TYPES);
 
-const CHECKINS = ['12:00', '13:00', '14:00'];
-
-const CHECKOUTS = ['12:00', '13:00', '14:00'];
-
-const FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
-
-const PHOTOS = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
-
 const addOffers = () => {
   for (let i = 0; i < OFFERS_COUNT; i++) {
-    OFFERS.push({
+    offers.push({
       author: {
         avatar: 'img/avatars/user0' + getRandomNumber(Avatar.MIN, Avatar.MAX) + '.png',
       },
@@ -66,7 +66,7 @@ const addOffers = () => {
       },
     });
   }
-  return OFFERS;
+  return offers;
 };
 
 export {addOffers, OFFERS_COUNT, TYPES};

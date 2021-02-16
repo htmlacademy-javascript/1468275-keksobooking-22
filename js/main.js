@@ -1,8 +1,8 @@
-import {createCards} from './popup.js';
+import {createCard} from './popup.js';
 import {addOffers} from './data.js';
 
 const map = document.querySelector('.map__canvas');
 const adverts = addOffers();
-const cardsMarkup = createCards(adverts);
+const cardsMarkup = createCard(adverts[0]);
 
 map.appendChild(cardsMarkup);
