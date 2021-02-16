@@ -1,4 +1,4 @@
-import {types} from './data.js';
+import {TYPES} from './data.js';
 import {numDecline} from './util.js';
 
 const templatePopup = document.querySelector('#card').content.querySelector('.popup');
@@ -16,7 +16,7 @@ const createCards = (arr) => {
     offerElement.querySelector('.popup__description').textContent = offer.description;
     offerElement.querySelector('.popup__text--address').textContent = offer.adress;
     offerElement.querySelector('.popup__text--price').textContent = offer.price + '₽/ночь';
-    offerElement.querySelector('.popup__type').textContent = types[offer.type];
+    offerElement.querySelector('.popup__type').textContent = TYPES[offer.type];
     offerElement.querySelector('.popup__text--capacity').textContent = offer.rooms + ' ' + numDecline((offer.rooms), ['комната', 'комнаты', 'комнат']) + ' ' + offer.guests + ' ' + numDecline((offer.guests), ['гость', 'гостя', 'гостей']);
     offerElement.querySelector('.popup__text--time').textContent = 'Заезд после ' + offer.checkin + ', ' + 'выезд до ' + offer.checkout;
 

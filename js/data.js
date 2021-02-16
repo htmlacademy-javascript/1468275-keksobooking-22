@@ -22,26 +22,28 @@ const Rooms = {
   MAX: 5,
 };
 
-const offers = [];
+const OFFERS = [];
 
-const types = {
+const TYPES = {
   palace: 'Дворец',
   flat: 'Квартира',
   house: 'Дом',
   bungalow: 'Бунгало',
 };
 
-const checkins = ['12:00', '13:00', '14:00'];
+const apartamentTypes = Object.keys(TYPES);
 
-const checkouts = ['12:00', '13:00', '14:00'];
+const CHECKINS = ['12:00', '13:00', '14:00'];
 
-const features = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
+const CHECKOUTS = ['12:00', '13:00', '14:00'];
+
+const FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
 
 const PHOTOS = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
 
 const addOffers = () => {
   for (let i = 0; i < OFFERS_COUNT; i++) {
-    offers.push({
+    OFFERS.push({
       author: {
         avatar: 'img/avatars/user0' + getRandomNumber(Avatar.MIN, Avatar.MAX) + '.png',
       },
@@ -49,12 +51,12 @@ const addOffers = () => {
         title: 'Какой-то заголовок.',
         adress: getRandomNumber(35.65000, 35.70000, 5) + ', ' + getRandomNumber(139.70000, 139.80000, 5),
         price: getRandomNumber(Price.MIN, Price.MAX),
-        type: getRandomArrayElelement(types),
+        type: getRandomArrayElelement(apartamentTypes),
         rooms: getRandomNumber(Rooms.MIN, Rooms.MAX).toFixed(),
         guests: getRandomNumber(Guests.MIN, Guests.MAX),
-        checkin: getRandomArrayElelement(checkins),
-        checkout: getRandomArrayElelement(checkouts),
-        features: shuffleArray(features).slice(0, getRandomNumber(1, features.length)),
+        checkin: getRandomArrayElelement(CHECKINS),
+        checkout: getRandomArrayElelement(CHECKOUTS),
+        features: shuffleArray(FEATURES).slice(0, getRandomNumber(1, FEATURES.length)),
         description: 'Какое-то описание.',
         photos: shuffleArray(PHOTOS, getRandomNumber(1, PHOTOS.length)),
       },
@@ -64,7 +66,7 @@ const addOffers = () => {
       },
     });
   }
-  return offers;
+  return OFFERS;
 };
 
-export {addOffers, OFFERS_COUNT, types};
+export {addOffers, OFFERS_COUNT, TYPES};
