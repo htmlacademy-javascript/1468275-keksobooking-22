@@ -5,10 +5,12 @@ const APARTAMENT_PRICE = {
   bungalow: 0,
 };
 
-const apartamentTypeElement = document.querySelector('.house-type');
-const apartamentPriceElement = document.querySelector('.house-price');
-const timeInElement = document.querySelector('.timein');
-const timeOutElement = document.querySelector('.timeout');
+const adForm = document.querySelector('.ad-form');
+
+const apartamentTypeElement = adForm.querySelector('#type');
+const apartamentPriceElement = adForm.querySelector('#price');
+const timeInElement = adForm.querySelector('#timein');
+const timeOutElement = adForm.querySelector('#timeout');
 
 const changeMinPrice = () => {
   const type = apartamentTypeElement.value;
@@ -16,7 +18,7 @@ const changeMinPrice = () => {
   apartamentPriceElement.min = APARTAMENT_PRICE[type];
 };
 
-document.addEventListener('DOMContentLoaded', changeMinPrice);
+changeMinPrice();
 
 apartamentTypeElement.addEventListener('change', changeMinPrice);
 timeInElement.addEventListener('change', () => {
