@@ -55,9 +55,6 @@ const offers = [];
 
 const apartamentTypes = Object.keys(TYPES);
 
-const latitude = getRandomNumber(Coordinates.MIN_X, Coordinates.MAX_X, 5);
-const longitude = getRandomNumber(Coordinates.MIN_Y,Coordinates.MAX_Y, 5);
-
 const addOffers = () => {
   for (let i = 0; i < OFFERS_COUNT; i++) {
     offers.push({
@@ -66,7 +63,7 @@ const addOffers = () => {
       },
       offer: {
         title: 'Какой-то заголовок.',
-        adress: `${latitude}, ${longitude}`,
+        adress: `${getRandomNumber(Coordinates.MIN_X, Coordinates.MAX_X, 5)}, ${getRandomNumber(Coordinates.MIN_Y,Coordinates.MAX_Y, 5)}`,
         price: getRandomNumber(Price.MIN, Price.MAX),
         type: getRandomArrayElelement(apartamentTypes),
         rooms: getRandomNumber(Rooms.MIN, Rooms.MAX).toFixed(),
@@ -78,12 +75,12 @@ const addOffers = () => {
         photos: shuffleArray(PHOTOS, getRandomNumber(1, PHOTOS.length)),
       },
       location: {
-        x: latitude,
-        y: longitude,
+        x: getRandomNumber(Coordinates.MIN_X, Coordinates.MAX_X, 5),
+        y: getRandomNumber(Coordinates.MIN_Y,Coordinates.MAX_Y, 5),
       },
     });
   }
   return offers;
 };
 
-export { addOffers, TYPES, APARTAMENT_PRICE, latitude, longitude };
+export { addOffers, TYPES, APARTAMENT_PRICE, Coordinates };

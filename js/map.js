@@ -1,5 +1,6 @@
 /* global L:readonly */
-import { addOffers, latitude, longitude } from './data.js';
+import { addOffers, Coordinates } from './data.js';
+import { getRandomNumber } from './util.js'
 import { createCard } from './popup.js';
 import { activateForm, setAdds } from './form.js';
 
@@ -10,7 +11,7 @@ const CENTER_MAP = {
   lng: 139.69200,
 };
 
-const SCALE = 10;
+const SCALE = 12;
 
 const MainIcon = {
   WIDTH: 52,
@@ -66,11 +67,10 @@ const initMap = () => {
   const points = cardOffers;
 
   points.forEach((point) => {
-    // const { lat, lng } = point;
     const marker = L.marker(
       {
-        lat: latitude,
-        lng: longitude,
+        lat: getRandomNumber(Coordinates.MIN_X,Coordinates.MAX_X, 5),
+        lng: getRandomNumber(Coordinates.MIN_Y,Coordinates.MAX_Y, 5),
       },
       {
         draggable: false,
