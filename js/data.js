@@ -1,6 +1,13 @@
 import {getRandomNumber, getRandomArrayElelement, shuffleArray} from './util.js';
 
-const OFFERS_COUNT = 10;
+const APARTAMENT_PRICE = {
+  palace: 10000,
+  flat: 1000,
+  house: 5000,
+  bungalow: 0,
+};
+
+const OFFERS_COUNT = 1;
 
 const TYPES = {
   palace: 'Дворец',
@@ -22,9 +29,16 @@ const Avatar = {
   MAX: 8,
 };
 
+const Coordinates = {
+  MIN_X: 35.65000,
+  MAX_X: 35.70000,
+  MIN_Y: 139.70000,
+  MAX_Y: 139.80000,
+};
+
 const Guests = {
   MIN: 1,
-  MAX: 5,
+  MAX: 3,
 };
 
 const Price = {
@@ -34,22 +48,25 @@ const Price = {
 
 const Rooms = {
   MIN: 1,
-  MAX: 5,
+  MAX: 3,
 };
 
 const offers = [];
 
 const apartamentTypes = Object.keys(TYPES);
 
+const latitude = getRandomNumber(Coordinates.MIN_X, Coordinates.MAX_X, 5);
+const longitude = getRandomNumber(Coordinates.MIN_Y,Coordinates.MAX_Y, 5);
+
 const addOffers = () => {
   for (let i = 0; i < OFFERS_COUNT; i++) {
     offers.push({
       author: {
-        avatar: 'img/avatars/user0' + getRandomNumber(Avatar.MIN, Avatar.MAX) + '.png',
+        avatar: `img/avatars/user0${getRandomNumber(Avatar.MIN, Avatar.MAX)}.png`,
       },
       offer: {
         title: 'Какой-то заголовок.',
-        adress: getRandomNumber(35.65000, 35.70000, 5) + ', ' + getRandomNumber(139.70000, 139.80000, 5),
+        adress: `${latitude}, ${longitude}`,
         price: getRandomNumber(Price.MIN, Price.MAX),
         type: getRandomArrayElelement(apartamentTypes),
         rooms: getRandomNumber(Rooms.MIN, Rooms.MAX).toFixed(),
@@ -61,12 +78,12 @@ const addOffers = () => {
         photos: shuffleArray(PHOTOS, getRandomNumber(1, PHOTOS.length)),
       },
       location: {
-        x: getRandomNumber(35.65000, 35.70000, 5),
-        y: getRandomNumber(139.70000, 139.80000, 5),
+        x: latitude,
+        y: longitude,
       },
     });
   }
   return offers;
 };
 
-export {addOffers, OFFERS_COUNT, TYPES};
+export { addOffers, TYPES, APARTAMENT_PRICE };
