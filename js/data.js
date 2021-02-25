@@ -86,4 +86,4 @@ const addOffers = () => {
   return offers;
 };
 
-export { addOffers, TYPES, APARTAMENT_PRICE };
+export { addOffers, TYPES, APARTAMENT_PRICE, latitude, longitude };

@@ -1,5 +1,5 @@
 /* global L:readonly */
-import { addOffers } from './data.js';
+import { addOffers, latitude, longitude } from './data.js';
 import { createCard } from './popup.js';
 import { activateForm, setAdds } from './form.js';
 
@@ -22,7 +22,7 @@ const Icon = {
   HEIGHT: 40,
 };
 
-const initMap = (points) => {
+const initMap = () => {
   const map = L.map('map-canvas')
     .on('load', () => {
       activateForm();
@@ -57,29 +57,31 @@ const initMap = (points) => {
 
   mainMarker.addTo(map);
 
+  const icon = L.icon({
+    iconUrl: '/img/pin.svg',
+    iconSize: [Icon.WIDTH, Icon.HEIGHT],
+    iconAnchor: [Icon.WIDTH / 2, Icon.HEIGHT],
+  });
+
+  const points = cardOffers;
+
   points.forEach((point) => {
-    const {lat, lng} = point;
-
-    const icon = L.icon({
-      iconUrl: '/img/pin.svg',
-      iconSize: [Icon.WIDTH, Icon.HEIGHT],
-      iconAnchor: [Icon.WIDTH / 2, Icon.HEIGHT],
-    });
-
+    // const { lat, lng } = point;
     const marker = L.marker(
       {
-        lat,
-        lng,
+        lat: latitude,
+        lng: longitude,
       },
       {
-        icon,
+        draggable: false,
+        icon: icon,
       },
     );
 
     marker
       .addTo(map)
       .bindPopup(
-        createCard(cardOffers[point]),
+        createCard(point),
       );
   });
 
