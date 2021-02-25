@@ -38,7 +38,4 @@ const createCard = ({ author, offer }) => {
   return offerElement;
 };
 
-
-// createCard(cardOffers[0]);
-
 export {createCard};

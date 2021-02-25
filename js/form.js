@@ -8,11 +8,9 @@ const mapFilters = document.querySelector('.map__filters');
 
 const addressElement = adForm.querySelector('#address');
 
-const mapFiltersFieldsets = mapFilters.querySelectorAll('.map__filter');
+const filtersFieldsets = document.querySelectorAll('fieldset, select.map__filter')
 
 const mapFiltersFeatures = mapFilters.querySelector('.map__features');
-
-const adFormFieldsets = adForm.querySelectorAll('.ad-form__element');
 
 const adFormHeader = adForm.querySelector('.ad-form-header');
 
@@ -23,26 +21,28 @@ const apartamentPriceElement = adForm.querySelector('#price');
 const timeInElement = adForm.querySelector('#timein');
 
 const timeOutElement = adForm.querySelector('#timeout');
+
 const roomNumber = adForm.querySelector('#room_number');
+
 const capacity = adForm.querySelector('#capacity');
 
-mapFilters.classList.add('.map__filters--disabled');
+const deactivateForm = () => {
+  mapFilters.classList.add('.map__filters--disabled');
 
-adForm.classList.add('ad-form--disabled');
+  adForm.classList.add('ad-form--disabled');
 
-addressElement.readOnly = true;
+  addressElement.readOnly = true;
 
-adFormFieldsets.forEach((element) => {
-  element.disabled = true;
-});
+  filtersFieldsets.forEach((element) => {
+    element.disabled = !element.disabled;
+  });
 
-mapFiltersFieldsets.forEach((element) => {
-  element.disabled = true;
-});
+  mapFiltersFeatures.disabled = true;
 
-mapFiltersFeatures.disabled = true;
+  adFormHeader.disabled = true;
+};
 
-adFormHeader.disabled = true;
+deactivateForm();
 
 const changeMinPrice = () => {
   const type = apartamentTypeElement.value;
@@ -75,11 +75,7 @@ const activateForm = () => {
 
   adForm.classList.remove('ad-form--disabled');
 
-  adFormFieldsets.forEach((element) => {
-    element.disabled = false;
-  });
-
-  mapFiltersFieldsets.forEach((element) => {
+  filtersFieldsets.forEach((element) => {
     element.disabled = false;
   });
 
