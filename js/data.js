@@ -7,7 +7,7 @@ const APARTAMENT_PRICE = {
   bungalow: 0,
 };
 
-const OFFERS_COUNT = 1;
+const OFFERS_COUNT = 10;
 
 const TYPES = {
   palace: 'Дворец',
