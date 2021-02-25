@@ -30,6 +30,8 @@ mapFilters.classList.add('.map__filters--disabled');
 
 adForm.classList.add('ad-form--disabled');
 
+addressElement.readOnly = true;
+
 adFormFieldsets.forEach((element) => {
   element.disabled = true;
 });
