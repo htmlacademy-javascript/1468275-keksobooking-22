@@ -1,4 +1,4 @@
-import {APARTAMENT_PRICE} from './data.js';
+import { APARTAMENT_PRICE } from './data.js';
 
 const DECIMAL_PLACES = 5;
 
@@ -88,4 +88,4 @@ const activateForm = () => {
   adFormHeader.disabled = false;
 };
 
-export {activateForm, setAdds};
+export { activateForm, setAdds };

@@ -1,4 +1,4 @@
-import {getRandomNumber, getRandomArrayElelement, shuffleArray} from './util.js';
+import { getRandomNumber, getRandomArrayElelement, shuffleArray } from './util.js';
 
 const APARTAMENT_PRICE = {
   palace: 10000,

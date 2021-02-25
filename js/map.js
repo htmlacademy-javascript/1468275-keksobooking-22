@@ -4,7 +4,7 @@ import { getRandomNumber } from './util.js'
 import { createCard } from './popup.js';
 import { activateForm, setAdds } from './form.js';
 
-const cardOffers = addOffers();
+const points = addOffers();
 
 const CENTER_MAP = {
   lat: 35.68950,
@@ -64,8 +64,6 @@ const initMap = () => {
     iconAnchor: [Icon.WIDTH / 2, Icon.HEIGHT],
   });
 
-  const points = cardOffers;
-
   points.forEach((point) => {
     const marker = L.marker(
       {
@@ -88,5 +86,4 @@ const initMap = () => {
   return map;
 };
 
-
-export {initMap};
+export { initMap };
