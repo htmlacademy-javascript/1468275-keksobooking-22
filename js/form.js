@@ -1,6 +1,7 @@
 import { APARTAMENT_PRICE } from './data.js';
 
 const DECIMAL_PLACES = 5;
+const MAX_PRICE = 1000000;
 
 const TitleLength = {
   MIN: 30,
@@ -10,31 +11,6 @@ const TitleLength = {
 const adForm = document.querySelector('.ad-form');
 
 const adFormTitle = adForm.querySelector('#title');
-
-// adFormTitle.addEventListener('invalid', () => {
-//   if (adFormTitle.validity.tooShort) {
-//     adFormTitle.setCustomValidity('Заголовок не может быть короче 30 символов');
-//   } else if (adFormTitle.validity.tooLong) {
-//     adFormTitle.setCustomValidity('Заголовок не может быть длиннее 100 символов');
-//   } else if (adFormTitle.validity.valueMissing) {
-//     adFormTitle.setCustomValidity('Обязательное для заполнения поле!');
-//   } else {
-//     adFormTitle.setCustomValidity('');
-//   }
-// });
-
-adFormTitle.addEventListener('input', (evt) => {
-  const valueLength = evt.target.value.length;
-  if (valueLength < TitleLength.MIN) {
-    adFormTitle.setCustomValidity(`Введите ещё ${TitleLength.MIN - valueLength} симв.`)
-  } else if (valueLength > TitleLength.MAX) {
-    adFormTitle.setCustomValidity(`Удалите лишние ${valueLength - TitleLength.MAX} симв.`)
-  } else {
-    adFormTitle.setCustomValidity('');
-  }
-
-  adFormTitle.reportValidity();
-});
 
 const mapFilters = document.querySelector('.map__filters');
 
@@ -57,6 +33,31 @@ const timeOutElement = adForm.querySelector('#timeout');
 const roomNumber = adForm.querySelector('#room_number');
 
 const capacity = adForm.querySelector('#capacity');
+
+adFormTitle.addEventListener('input', (evt) => {
+  const valueLength = evt.target.value.length;
+  if (valueLength < TitleLength.MIN) {
+    adFormTitle.setCustomValidity(`Введите ещё ${TitleLength.MIN - valueLength} симв.`)
+  } else if (valueLength > TitleLength.MAX) {
+    adFormTitle.setCustomValidity(`Удалите лишние ${valueLength - TitleLength.MAX} симв.`)
+  } else {
+    adFormTitle.setCustomValidity('');
+  }
+
+  adFormTitle.reportValidity();
+});
+
+apartamentPriceElement.addEventListener('input', (evt) => {
+  const valuePrice = evt.target.value;
+  if (valuePrice > MAX_PRICE) {
+    apartamentPriceElement.setCustomValidity(`Цена за ночь не должна превышать ${MAX_PRICE} руб.`);
+  } else {
+    apartamentPriceElement.setCustomValidity('');
+  }
+
+  apartamentPriceElement.reportValidity();
+});
+
 
 const deactivateForm = () => {
   mapFilters.classList.add('.map__filters--disabled');
@@ -97,6 +98,7 @@ timeOutElement.addEventListener('change', () => {
 roomNumber.addEventListener('change', () => {
   capacity.value = roomNumber.value;
 });
+
 
 const setAdds = (coordinates) => {
   addressElement.value = `${coordinates.lat.toFixed(DECIMAL_PLACES)}, ${coordinates.lng.toFixed(DECIMAL_PLACES)}`;
