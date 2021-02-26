@@ -2,7 +2,39 @@ import { APARTAMENT_PRICE } from './data.js';
 
 const DECIMAL_PLACES = 5;
 
+const TitleLength = {
+  MIN: 30,
+  MAX: 100,
+};
+
 const adForm = document.querySelector('.ad-form');
+
+const adFormTitle = adForm.querySelector('#title');
+
+// adFormTitle.addEventListener('invalid', () => {
+//   if (adFormTitle.validity.tooShort) {
+//     adFormTitle.setCustomValidity('Заголовок не может быть короче 30 символов');
+//   } else if (adFormTitle.validity.tooLong) {
+//     adFormTitle.setCustomValidity('Заголовок не может быть длиннее 100 символов');
+//   } else if (adFormTitle.validity.valueMissing) {
+//     adFormTitle.setCustomValidity('Обязательное для заполнения поле!');
+//   } else {
+//     adFormTitle.setCustomValidity('');
+//   }
+// });
+
+adFormTitle.addEventListener('input', (evt) => {
+  const valueLength = evt.target.value.length;
+  if (valueLength < TitleLength.MIN) {
+    adFormTitle.setCustomValidity(`Введите ещё ${TitleLength.MIN - valueLength} симв.`)
+  } else if (valueLength > TitleLength.MAX) {
+    adFormTitle.setCustomValidity(`Удалите лишние ${valueLength - TitleLength.MAX} симв.`)
+  } else {
+    adFormTitle.setCustomValidity('');
+  }
+
+  adFormTitle.reportValidity();
+});
 
 const mapFilters = document.querySelector('.map__filters');
 
