@@ -100,6 +100,8 @@ const onChangeRoomNumber = () => {
   }
 };
 
+onChangeRoomNumber();
+
 roomNumber.addEventListener('change', onChangeRoomNumber);
 
 
