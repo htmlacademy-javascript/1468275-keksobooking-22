@@ -2,7 +2,7 @@
 import { addOffers, Coordinates } from './data.js';
 import { getRandomNumber } from './util.js'
 import { createCard } from './popup.js';
-import { activateForm, setAdds } from './form.js';
+import { toggleActivateForm, setAdds } from './form.js';
 
 const points = addOffers();
 
@@ -26,7 +26,7 @@ const Icon = {
 const initMap = () => {
   const map = L.map('map-canvas')
     .on('load', () => {
-      activateForm();
+      toggleActivateForm();
       setAdds(CENTER_MAP);
     })
     .setView(CENTER_MAP, SCALE);

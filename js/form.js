@@ -18,10 +18,6 @@ const addressElement = adForm.querySelector('#address');
 
 const filtersFieldsets = document.querySelectorAll('fieldset, select.map__filter')
 
-const mapFiltersFeatures = mapFilters.querySelector('.map__features');
-
-const adFormHeader = adForm.querySelector('.ad-form-header');
-
 const apartamentTypeElement = adForm.querySelector('#type');
 
 const apartamentPriceElement = adForm.querySelector('#price');
@@ -59,23 +55,16 @@ apartamentPriceElement.addEventListener('input', (evt) => {
 });
 
 
-const deactivateForm = () => {
-  mapFilters.classList.add('.map__filters--disabled');
-
-  adForm.classList.add('ad-form--disabled');
-
-  addressElement.readOnly = true;
+const toggleActivateForm = () => {
+  mapFilters.classList.toggle('.map__filters--disabled');
+  adForm.classList.toggle('ad-form--disabled');
 
   filtersFieldsets.forEach((element) => {
     element.disabled = !element.disabled;
   });
-
-  mapFiltersFeatures.disabled = true;
-
-  adFormHeader.disabled = true;
 };
 
-deactivateForm();
+toggleActivateForm();
 
 const changeMinPrice = () => {
   const type = apartamentTypeElement.value;
@@ -87,35 +76,21 @@ changeMinPrice();
 
 apartamentTypeElement.addEventListener('change', changeMinPrice);
 
-timeInElement.addEventListener('change', () => {
-  timeOutElement.value = timeInElement.value;
+timeInElement.addEventListener('change', (evt) => {
+  timeOutElement.value = evt.target.value;
 });
 
-timeOutElement.addEventListener('change', () => {
-  timeInElement.value = timeOutElement.value;
+timeOutElement.addEventListener('change', (evt) => {
+  timeInElement.value = evt.target.value;
 });
 
-roomNumber.addEventListener('change', () => {
-  capacity.value = roomNumber.value;
+roomNumber.addEventListener('change', (evt) => {
+  capacity.value = evt.target.value;
 });
 
 
 const setAdds = (coordinates) => {
   addressElement.value = `${coordinates.lat.toFixed(DECIMAL_PLACES)}, ${coordinates.lng.toFixed(DECIMAL_PLACES)}`;
-}
-
-const activateForm = () => {
-  mapFilters.classList.remove('.map__filters--disabled');
-
-  adForm.classList.remove('ad-form--disabled');
-
-  filtersFieldsets.forEach((element) => {
-    element.disabled = false;
-  });
-
-  mapFiltersFeatures.disabled = false;
-
-  adFormHeader.disabled = false;
 };
 
-export { activateForm, setAdds };
+export { toggleActivateForm, setAdds };
