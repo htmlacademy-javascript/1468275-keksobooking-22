@@ -95,7 +95,7 @@ const onChangeRoomNumber = () => {
   if (capacity.options.length > 0) {
     [].forEach.call(capacity.options, (item) => {
       item.selected = (RoomsCapacity[roomNumber.value][0] === item.value) ? true : false;
-      item.disabled = (RoomsCapacity[roomNumber.value].indexOf(item.value) >= 0) ? false : true;
+      item.disabled = !(RoomsCapacity[roomNumber.value].indexOf(item.value) >= 0);
     });
   }
 };
